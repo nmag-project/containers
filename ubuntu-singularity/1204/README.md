@@ -1,6 +1,6 @@
 # About
 
-This directory contains code to build a singularity nmag container based on Ubuntu 14.04.
+This directory contains code to build a singularity nmag container based on Ubuntu 12.04.
 
 # Dependencies
 
