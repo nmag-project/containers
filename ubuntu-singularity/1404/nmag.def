@@ -14,7 +14,7 @@ From: ubuntu:12.04
 
 	# Install Dependencies
 	apt-get update
-	apt-get install -y g++ libblas-dev libreadline-dev make m4 gawk zlib1g-dev readline-common liblapack-dev
+	apt-get install -y dpkg-dev g++ libblas-dev libreadline-dev make m4 gawk zlib1g-dev readline-common liblapack-dev
 
 %labels
 	Author Madison_Hanberry
