@@ -1,0 +1,20 @@
+BootStrap: docker
+From: ubuntu:12.04
+
+%setup
+	wget http://nmag.soton.ac.uk/nmag/0.2/download/all/nmag-0.2.1.tar.gz
+	tar xzvf nmag-0.2.1.tar.gz
+
+%files
+	./nmag-0.2.1/* /usr/share/nmag
+
+%post
+	# Change to installation directory
+	cd /usr/share/nmag
+
+	# Install Dependencies
+	apt-get update
+	apt-get install -y dpkg-dev g++ libblas-dev libreadline-dev make m4 gawk zlib1g-dev readline-common liblapack-dev
+
+%labels
+	Author Madison_Hanberry
