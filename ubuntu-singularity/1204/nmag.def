@@ -4,6 +4,7 @@ From: ubuntu:12.04
 %setup
 	wget http://nmag.soton.ac.uk/nmag/0.2/download/all/nmag-0.2.1.tar.gz
 	tar xzvf nmag-0.2.1.tar.gz
+	chmod -R 777 nmag-0.2.1
 
 %files
 	./nmag-0.2.1/* /usr/share/nmag
