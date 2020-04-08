@@ -11,10 +11,8 @@ run \
 	
 run \
 	# Initialize Environment
-	useradd nmag && \
-	mkdir /home/nmag && \
+	useradd -m -s /bin/bash nmag && \
 	cd /home/nmag && \
-	chown -R nmag:nmag . && \
 	wget --no-check-certificate https://github.com/fangohr/nmag-releases/raw/master/0.2/all/nmag-0.2.1.tar.gz && \
 	tar xzvf nmag-$NMAG_VERSION.tar.gz && \
 	chown -R nmag:nmag nmag-$NMAG_VERSION
@@ -32,4 +30,4 @@ run \
 	apt-get purge -y wget && \
 	rm /home/nmag/nmag-$NMAG_VERSION.tar.gz
 
-entrypoint su nmag
+cmd su nmag
