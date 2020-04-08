@@ -19,6 +19,6 @@ To give the nmag environment access to the current directory and its children, u
 
 Use the sphere1 simulation included in the current directory to test the container like so:
 ```
-docker run -it $PWD:/mnt nmag
+docker run -it -v $PWD:/mnt nmag
 $ nsim sphere1.py
 ```
