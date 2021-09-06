@@ -1,4 +1,4 @@
-name: Build Docker Image Ubuntu 12.04
+name: Build Docker Image Ubuntu 14.04
 
 on:
   push:
@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file ubuntu-docker/1204/Dockerfile --tag ubuntu-1204:$(date +%s)
+      run: docker build . --file ubuntu-docker/1404/Dockerfile --tag ubuntu-1404:$(date +%s)
 
     - name: run example in container
-      run: cd ubuntu-docker/1204 && docker run -it -v $PWD/mnt nmag nsim sphere1.py
+      run: cd ubuntu-docker/1404 && docker run -it -v $PWD/mnt nmag nsim sphere1.py
   
