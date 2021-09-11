@@ -5,7 +5,8 @@ workdir /mnt
 env NMAG_VERSION 0.2.1
 
 run \
-	# Install dependencies
+	# Switch out repository references for old releases and install dependencies
+        sed -i -re 's/([a-z]{2}\.)?security.ubuntu.com|archive.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list && \
 	apt-get update && \
 	apt-get install -y wget dpkg-dev g++ libblas-dev libreadline-dev make m4 gawk zlib1g-dev readline-common liblapack-dev
 	
