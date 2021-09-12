@@ -1,7 +1,5 @@
 from ubuntu:12.04
 
-workdir /mnt
-
 env NMAG_VERSION 0.2.1
 
 run \
@@ -31,4 +29,8 @@ run \
 	apt-get purge -y wget && \
 	rm /home/nmag/nmag-$NMAG_VERSION.tar.gz
 
+# directory with short name to mount host file system in
+run mkdir /io
+
+WORKDIR /io
 cmd su nmag
