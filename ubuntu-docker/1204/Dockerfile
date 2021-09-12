@@ -32,5 +32,12 @@ run \
 # directory with short name to mount host file system in
 run mkdir /io
 
+run \
+	# for mounting /io as user later:
+	## the next line doesn't work (wrong user id)
+	# chown -R nmag:nmag /io
+	## set the userid manually (nmag as first added user is 1000)
+	chown -R 1000:1000 /io
+
 WORKDIR /io
 cmd su nmag
