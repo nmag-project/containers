@@ -18,6 +18,9 @@ jobs:
       run: cd ubuntu-docker/1204 && make build
       #run: docker build . --file ubuntu-docker/1204/Dockerfile --tag ubuntu-1204:$(date +%s)
 
+    - name: change directory permissions
+      run: chmod 777 ubuntu-docker/1204
+
     - name: run example in container
       run: cd ubuntu-docker/1204 && make test
   
