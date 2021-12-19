@@ -14,13 +14,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Build the Docker image
       run: cd ubuntu-docker/1204 && make build
-      #run: docker build . --file ubuntu-docker/1204/Dockerfile --tag ubuntu-1204:$(date +%s)
 
-    - name: change directory permissions
+    - name: Change directory permissions
       run: chmod 777 ubuntu-docker/1204
 
-    - name: run example in container
+    - name: Run example in container
       run: cd ubuntu-docker/1204 && make test
-  
+
+    - name: Publish to Dockerhub
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: cd ubuntu-docker/1204 && make publish
