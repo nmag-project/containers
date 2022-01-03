@@ -20,7 +20,7 @@ tag:
 	docker image tag nmag-12.04 nmag/nmag-12.04
 
 push:
-	docker image push nmag/namg-12.04
+	docker image push nmag/nmag-12.04
 
 publish: login tag push
 
