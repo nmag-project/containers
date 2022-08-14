@@ -5,7 +5,7 @@ run:
 	docker run --rm -ti -v `pwd`:/io nmag-12.04
 
 sphere1:
-	docker run --rm -v `pwd`:/io nmag-12.04 su - nmag -c "cd /io && nsim sphere1.py"
+	docker run --rm -v `pwd`:/io nmag-12.04 su nmag -c "bash ~/.bashrc && sleep 1 && mpiexec -n 2 nsim sphere1.py"
 
 test: clean sphere1
 

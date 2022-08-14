@@ -21,8 +21,17 @@ run \
 	su - nmag -c "cd nmag-$NMAG_VERSION && make && make clean"
 
 run \
-	# Link binaries
-	ln -sf /home/nmag/nmag-$NMAG_VERSION/bin/* /usr/bin
+	# Link binaries and libraries
+	ln -sf /home/nmag/nmag-$NMAG_VERSION/bin/* /usr/bin && \
+	ln -sf /home/nmag/nmag-$NMAG_VERSION/lib/mpich2/bin/* /usr/bin && \
+	find /home/nmag/nmag-$NMAG_VERSION/lib -maxdepth 1 -type f | xargs -I {} ln -sf {} /usr/lib
+
+run \
+	# Set up mpd
+	echo "MPD_SECRETWORD=$RANDOM" > /home/nmag/.mpd.conf && \
+	chown nmag:nmag /home/nmag/.mpd.conf && \
+	chmod 600 /home/nmag/.mpd.conf && \
+	echo "mpd &" >> /home/nmag/.bashrc
 
 run \
 	# Clean up
