@@ -1,6 +1,6 @@
 from ubuntu:12.04
 
-env NMAG_VERSION 0.2.1
+env NMAG_VERSION=0.2.1
 
 run \
 	# Switch out repository references for old releases and install dependencies
@@ -30,8 +30,7 @@ run \
 	# Set up mpd
 	echo "MPD_SECRETWORD=$RANDOM" > /home/nmag/.mpd.conf && \
 	chown nmag:nmag /home/nmag/.mpd.conf && \
-	chmod 600 /home/nmag/.mpd.conf && \
-	echo "mpd &" >> /home/nmag/.bashrc
+	chmod 600 /home/nmag/.mpd.conf
 
 run \
 	# Clean up
@@ -48,5 +47,14 @@ run \
 	## set the userid manually (nmag as first added user is 1000)
 	chown -R 1000:1000 /io
 
-WORKDIR /io
-cmd su nmag
+workdir /io
+
+user nmag
+
+env USER=nmag
+
+add entrypoint.sh /home/nmag/entrypoint.sh
+
+entrypoint ["/home/nmag/entrypoint.sh"]
+
+cmd ["/bin/bash"]
